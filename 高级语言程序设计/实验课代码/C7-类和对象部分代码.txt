@@ -1,0 +1,751 @@
+#include<iostream>
+using namespace std;
+
+//=================================================================
+//class SoccerTeam
+//{
+//public:
+//    char * teamname;
+//    int win;
+//    int draw;
+//    int lose;
+//	//SoccerTeam()=default;
+//};
+//
+//
+//int main()
+//{
+//	SoccerTeam teamA={"spain",3,0,0};
+//}
+
+//=========================构造函数========================================
+
+//class SoccerTeam
+//{
+//	int id;
+//    char * teamname;
+//    int win;
+//    int draw;
+//    int lose;
+//public:    
+//    SoccerTeam(int num,char * name);// 构造函数
+//    void printInfo()
+//    { 
+//       cout<<"序号："<<id<<"  队名："<<teamname<<"："<<win<<"胜"<<draw<<"平"<<lose<<"负"<<endl;
+//	}
+//	void score()
+//	{        
+//		cout<<"积分："<<win*3+lose<<endl;
+//	}
+//}; 
+//
+//SoccerTeam::SoccerTeam (int num, char *name)// 构造函数
+//{ 
+//	id=num;
+//    teamname = new char[strlen(name)+1];   
+//    strcpy(teamname,name);
+//    win = 0;
+//    draw = 0;
+//    lose = 0;
+//} 
+//
+//SoccerTeam::SoccerTeam (int num, char *name):id(num)// 初始化列表构造函数
+//{ 
+//    teamname = new char[strlen(name)+1];   
+//    strcpy(teamname,name);
+//    win = 0;
+//    draw = 0;
+//    lose = 0;
+//}     
+//   
+//int main()
+//{
+//	char* name = "Spain";
+//	SoccerTeam teamA(1,name);
+//	teamA.printInfo();
+//	teamA.score();
+//}
+
+//===================拷贝构造函数=============================
+//class SoccerTeam
+//{
+//	char * teamname;
+//	int win;
+//	int draw;
+//	int lose;
+// 
+//	public:
+//    
+//	SoccerTeam(char * name);// 构造函数
+//	void printInfo()
+//	{ 
+//		cout<<teamname<<":"<<win<<"胜"<<draw<<"平"<<lose<<"负"<<endl;
+//	}
+//	void score()
+//	{ 
+//		cout<<"积分"<<":"<<win*3+lose<<endl;
+//	}
+//}; 
+//
+//SoccerTeam::SoccerTeam ( char *name)// 构造函数
+//{ 
+//	teamname = new char[strlen(name)+1];   
+//	strcpy(teamname,name);
+//	win = 0;
+//	draw = 0;
+//	lose = 0;
+//} 
+//    
+//   
+//int main()
+//{
+//	char* name = "Spain";
+//	SoccerTeam teamA(name);
+//	teamA.printInfo();
+//	teamA.score();
+//
+//	SoccerTeam teamB =teamA;  //赋值
+//	teamB.printInfo();
+//	teamB.score();
+//	SoccerTeam teamC(teamA);  //拷贝构造函数
+//	teamC.printInfo();
+//	teamC.score();
+//}
+
+//================================================
+
+//class SoccerTeam
+//{
+//	char * teamname;
+//	int win;
+//	int draw;
+//	int lose;
+// 
+//	public:
+//    
+//	SoccerTeam(char * name);// 构造函数
+//	SoccerTeam (char *name,int win1,int draw1,int lose1 );// 另一个构造函数
+//	void printInfo()
+//	{ 
+//		cout<<teamname<<":"<<win<<"胜"<<draw<<"平"<<lose<<"负"<<endl;
+//	}
+//	void score()
+//	{ 
+//		cout<<"积分"<<":"<<win*3+lose<<endl;
+//	}
+//}; 
+//
+//SoccerTeam::SoccerTeam ( char *name)// 构造函数
+//{ 
+//	teamname = new char[strlen(name)+1];   
+//	strcpy(teamname,name);
+//	win = 0;
+//	draw = 0;
+//	lose = 0;
+//} 
+//SoccerTeam::SoccerTeam ( char *name,int win1,int draw1,int lose1 )// 构造函数
+//{ 
+//	teamname = new char[strlen(name)+1];   
+//	strcpy(teamname,name);
+//	win = win1;
+//	draw = draw1;
+//	lose = lose1;
+//}
+//    
+//   
+//int main()
+//{
+//	char* name = "Spain";
+//	SoccerTeam teamA(name);
+//	teamA.printInfo();
+//	teamA.score();
+//	name = "Spain";
+//	SoccerTeam teamB(name,3,0,0);
+//	teamB.printInfo();
+//	teamB.score();
+//}
+
+//===================对象数组初始化(初始化列表)=============================
+//
+//class SoccerTeam
+//{
+//	char * teamname;
+//	int win;
+//	int draw;
+//	int lose;
+// 
+//	public:
+//    
+//	SoccerTeam(char * name);// 构造函数
+//	void printInfo()
+//	{ 
+//		cout<<teamname<<":"<<win<<"胜"<<draw<<"平"<<lose<<"负"<<endl;
+//	}
+//	void score()
+//	{ 
+//		cout<<"积分"<<":"<<win*3+lose<<endl;
+//	}
+//}; 
+//
+//SoccerTeam::SoccerTeam (char *name)// 构造函数
+//{ 
+//    teamname = new char[strlen(name)+1];   
+//    strcpy(teamname,name);
+//    win = 0;
+//    draw = 0;
+//    lose = 0;
+//} 
+//
+//    
+//   
+//int main()
+//{
+//	SoccerTeam team[4]={SoccerTeam("FC Barcelona"),  SoccerTeam("Juventus") ,SoccerTeam("RealMadrid"),  SoccerTeam("Arsenal") };
+//	team[0].printInfo();
+//	team[1].printInfo();
+//	team[2].printInfo();
+//	team[3].printInfo();
+//
+//}
+
+
+//=====================对象数组初始化===========================
+//class SoccerTeam
+//{
+//	char * teamname;
+//	int win;
+//	int draw;
+//	int lose;
+// 
+//public:
+//    
+//	void GetMemberValue(char* name,int w,int d,int l )
+//	{
+//		teamname = name;
+//		win = w;
+//		draw = d;
+//		lose = l;
+//	}
+//	void printInfo()
+//	{ 
+//		cout<<teamname<<":"<<win<<"胜"<<draw<<"平"<<lose<<"负"<<endl;
+//	}
+//	void score()
+//	{ 
+//		   cout<<"积分"<<":"<<win*3+lose<<endl;
+//	}
+//}; 
+//   
+//   
+//int main()
+//{
+//	SoccerTeam team[4];
+//
+//	for(int i=0;i<4;i++)
+//	{
+//		cout<<"Input Team Name:";
+//		char *name = new char[50];
+//		cin>>name;
+//		int w,d,l;
+//		cout<<"Input Win Number:";
+//		cin>>w;
+//		cout<<"Input Draw Number:";
+//		cin>>d;
+//		cout<<"Input Lose Number:";
+//		cin>>l;
+//		team[i].GetMemberValue(name,w,d,l);
+//		team[i].printInfo();
+//		team[i].score();
+//		//在主函数中对成员变量赋值
+//	}
+//
+//
+//}
+
+//=====================析构函数===========================
+//class SoccerTeam
+//{
+//	char * teamname;
+//	int win;
+//	int draw;
+//	int lose;
+// 
+//public:  
+//	SoccerTeam(char * name);// 构造函数
+//	SoccerTeam::~SoccerTeam(); //析构函数
+//	void printInfo()
+//	{ 
+//		cout<<teamname<<":"<<win<<"胜"<<draw<<"平"<<lose<<"负"<<endl;
+//	}
+//	void score()
+//	{ 
+//		cout<<"积分:"<<win*3+lose<<endl;
+//	}
+//}; 
+//
+//SoccerTeam::SoccerTeam ( char *name)// 构造函数
+//{ 
+//	teamname = new char[strlen(name)+1];   
+//	strcpy(teamname,name);
+//	win = 0;
+//	draw = 0;
+//	lose = 0;
+//}; 
+//SoccerTeam::~SoccerTeam()  //析构函数
+//{
+//	cout<<"对象已经撤销！";
+//};
+//
+//   
+//int main()
+//{
+//char* name = "Spain";
+//SoccerTeam teamA(name);
+//teamA.printInfo();
+//teamA.score();
+//}
+
+
+
+//=====================对象的访问===========================
+//class SoccerTeam
+//{
+//	char * teamname;
+//public:
+//    int win;
+//    int draw;
+//    int lose;
+//    SoccerTeam(char * name);// 构造函数
+//	SoccerTeam();
+//    void printInfo()
+//    {   
+//       cout<<teamname<<endl;
+//    }
+//    void score()
+//    { 
+//       cout<<"积分:"<<win*3+lose<<endl;
+//    }
+//}; 
+//
+//SoccerTeam::SoccerTeam (char *name)// 构造函数
+//{ 
+//    teamname = new char[strlen(name)+1];   
+//    strcpy(teamname,name);
+//    win = 3;
+//    draw = 0;
+//    lose = 0;
+//} 
+//SoccerTeam::SoccerTeam()
+//{
+//    teamname = "Brazil";   
+//	win = 2;
+//	draw = 0;
+//	lose = 1;
+//};
+//   
+//int main()
+//{
+//	char* name = "Spain";
+//	SoccerTeam teamA(name);
+//	teamA.printInfo();
+//	cout<<teamA.win<<endl;
+//	cout<<teamA.draw<<endl;
+//	cout<<teamA.lose<<endl;
+//	teamA.score();
+//
+//	SoccerTeam *teamB = new SoccerTeam;
+//	teamB->printInfo();
+//	cout<<teamB->win<<endl;
+//	cout<<teamB->draw<<endl;
+//	cout<<teamB->lose<<endl;
+//	teamB->score();
+//}
+
+//=====================this指针===========================
+//class SoccerTeam
+//{
+//    char * teamname;
+//public:
+//    int win;
+//    int draw;
+//    int lose;
+//    SoccerTeam(char * name);
+//    void printInfo()
+//    {   
+//       cout<<teamname<<endl;
+//    }
+//    void score()
+//    { 
+//        int sco = this->win * 3 + this->draw;   //this指针
+//        cout<<"积分:"<<sco<<endl;
+//    }
+//}; 
+//
+//    SoccerTeam::SoccerTeam (char *name)
+//    { 
+//         teamname = new char[strlen(name)+1];   
+//         strcpy(teamname,name);
+//         win = 3;
+//         draw = 0;
+//         lose = 0;
+//    } 
+//
+//   
+//int main()
+//{
+//	char* name = "Spain";
+//	SoccerTeam teamA(name);
+//	teamA.printInfo();
+//	cout<<teamA.win<<endl;
+//	cout<<teamA.draw<<endl;
+//	cout<<teamA.lose<<endl;
+//	teamA.score();
+//}
+//
+//
+
+//=====================静态成员===========================
+//class SoccerTeam
+//{
+//	char * teamname;
+//	static char* stype;  //静态成员
+//public:
+//    int win;
+//    int draw;
+//    int lose;
+//    SoccerTeam(char * name);
+//    void printInfo()
+//    {   
+//       cout<<teamname<<endl;
+//       cout<<stype<<endl;
+//    }
+//    void score()
+//    { 
+//        int sco = this->win * 3 + this->draw;
+//        cout<<"积分:"<<sco<<endl;
+//    }
+//}; 
+//
+//char * SoccerTeam::stype = "National";   //初始化
+//SoccerTeam::SoccerTeam (char *name)
+//{ 
+//    teamname = new char[strlen(name)+1];   
+//    strcpy(teamname,name);
+//    win = 3;
+//    draw = 0;
+//    lose = 0;
+//}; 
+//
+//   
+//int main()
+//{
+//	char* name = "Spain";
+//	SoccerTeam teamA(name);
+//	teamA.printInfo();
+//	cout<<teamA.win<<endl;
+//	cout<<teamA.draw<<endl;
+//	cout<<teamA.lose<<endl;
+//	teamA.score();
+//}
+
+//=====================常量成员===========================
+//class SoccerTeam
+//{
+//	char * teamname;
+//	const int season;
+//public:
+//    int win;
+//    int draw;
+//    int lose;
+//
+//    SoccerTeam(char * name);
+//    void printInfo()
+//    {   
+//       cout<<"球队名称："<<teamname<<endl;
+//       cout<<"当前赛季："<<season<<endl;
+//    //season += 1; 错误！会有提示的！
+//    }
+//    void score()
+//    { 
+//		int sco = this->win * 3 + this->draw;
+//        cout<<"积分:"<<sco<<endl;
+//    }
+//}; 
+//
+//SoccerTeam::SoccerTeam (char *name):season(2017)
+//{ 
+//    teamname = new char[strlen(name)+1];   
+//    strcpy(teamname,name);
+//    win = 3;
+//    draw = 0;
+//    lose = 0;
+//}; 
+//
+//   
+//int main()
+//{
+//	char* name = "Spain";
+//	SoccerTeam teamA(name);
+//	teamA.printInfo();
+//	cout<<teamA.win<<endl;
+//	cout<<teamA.draw<<endl;
+//	cout<<teamA.lose<<endl;
+//	teamA.score();
+//}
+
+
+//=====================友元函数1===========================
+//class SoccerTeam
+//{
+//    char * teamname;
+//public:
+//    int win;
+//    int draw;
+//    int lose;
+//    SoccerTeam(char * name);
+//
+//	friend void printInfo(SoccerTeam st);   //说明友元函数
+//    
+//	void score()
+//    { 
+//		int sco = this->win * 3 + this->draw;
+//        cout<<"积分:"<<sco<<endl;
+//    }
+//}; 
+//
+//SoccerTeam::SoccerTeam (char *name)
+//{ 
+//    teamname = new char[strlen(name)+1];   
+//    strcpy(teamname,name);
+//    win = 3;
+//    draw = 0;
+//    lose = 0;
+//}; 
+//
+//void printInfo(SoccerTeam st) //友元函数
+//{   
+//    cout<<"球队名称："<<st.teamname<<endl;   //在类外直接访问私有成员
+//}  
+//int main()
+//{
+//	char* name = "Spain";
+//	SoccerTeam teamA(name);
+//	printInfo(teamA);
+//	cout<<teamA.win<<endl;
+//	cout<<teamA.draw<<endl;
+//	cout<<teamA.lose<<endl;
+//	teamA.score();
+//}
+
+
+//=====================友元函数2===========================
+//class SoccerA;
+//class SoccerB
+//{
+//    char * teamnameB;
+//public:
+//    int win;
+//    int draw;
+//    int lose;
+//    SoccerB(char * name);
+//    void printInfo(SoccerA sc);        //类B中声明打印函数 
+//}; 
+//
+//SoccerB::SoccerB (char *name)
+//{ 
+//        teamnameB = new char[strlen(name)+1];   
+//        strcpy(teamnameB,name);
+//        win = 3;
+//        draw = 0;
+//        lose = 0;
+//}; 
+//
+//class SoccerA
+//{
+//    char * teamnameA;
+//public:
+//    int win;
+//    int draw;
+//    int lose;
+//
+//    SoccerA(char * name);
+//    friend void SoccerB::printInfo(SoccerA sc); 
+//    //类A中声明，类B的打印函数为类A的友元函数，即类B的打印函数可访问类A的私有成员  
+//}; 
+//
+//SoccerA::SoccerA (char *name)
+//{ 
+//	teamnameA = new char[strlen(name)+1];   
+//	strcpy(teamnameA,name);
+//	win = 3;
+//	draw = 0;
+//	lose = 0;
+//}; 
+//
+//
+//void SoccerB::printInfo(SoccerA sc) 
+//{    
+//    cout<<"球队名称："<<sc.teamnameA<<endl;   
+//}  
+//int main()
+//{
+//	char* name = "Spain";
+//	char* name1 = "FC Barcelona";
+//	SoccerB teamB(name);           //定义类B的对象teamB
+//	SoccerA teamA(name1);          //定义类A的对象teamA
+//	teamB.printInfo(teamA);        //类B的函数（为类A的友元函数）访问类A的私有成员
+//}
+
+
+//=====================友元类===========================
+//class SoccerA;
+//class SoccerB
+//{
+//    char * teamnameB;
+//public:
+//    int win;
+//    int draw;
+//    int lose;
+//    SoccerB(char * name);
+//    void printInfo(SoccerA sc);        //类B中声明打印函数 
+//}; 
+//
+//SoccerB::SoccerB (char *name)
+//{ 
+//    teamnameB = new char[strlen(name)+1];   
+//    strcpy(teamnameB,name);
+//    win = 3;
+//    draw = 0;
+//    lose = 0;
+//}; 
+//
+//class SoccerA
+//{
+//    char * teamnameA;
+//public:
+//    int win;
+//    int draw;
+//    int lose;
+//
+//    SoccerA(char * name);
+//    friend SoccerB; 
+//    //类A中声明，讲类B定义为类A的友元类，即类B的函数可访问类A的私有成员。
+//    //注释掉此行的话， printInfo函数的定义就会报错，访问不到teamnameA 
+//}; 
+//
+//SoccerA::SoccerA (char *name)
+//{ 
+//    teamnameA = new char[strlen(name)+1];   
+//    strcpy(teamnameA,name);
+//    win = 3;
+//    draw = 0;
+//    lose = 0;
+//}; 
+//
+//
+//void SoccerB::printInfo(SoccerA sc) 
+//{    
+//    cout<<"球队名称："<<sc.teamnameA<<endl;   
+//}  
+//int main()
+//{
+//	char* name = "Spain";
+//	char* name1 = "FC Barcelona";
+//	SoccerB teamB(name);           //定义类B的对象teamB
+//	SoccerA teamA(name1);          //定义类A的对象teamA
+//	teamB.printInfo(teamA);        //类B的函数（B类为类A的友元类）访问类A的私有成员
+//}
+
+
+
+//=====================友元方式运算符重载===========================
+//class ComplexAdd
+//{
+//          double Real, Image;
+// public:
+//	ComplexAdd(double r=0, double i=0)
+//	{ 
+//		Real=r; Image=i; 
+//	}
+//	friend ComplexAdd operator + (ComplexAdd c1,ComplexAdd c2);          
+//	void show()
+//	{   
+//		cout<<Real;
+//		if(Image>0) 
+//		{
+//			cout<<'+'<<Image<<'i';
+//		}
+//		else if(Image<0) 
+//		{
+//			cout<<Image<<'i';
+//		}
+//		cout<<endl; 
+//	}
+//};
+//ComplexAdd operator+ (ComplexAdd c1,ComplexAdd c2) 
+//{
+//     ComplexAdd  temp;
+//     temp.Real=c1.Real+c2.Real; 
+//     temp.Image=c1.Image+c2.Image; 
+//     return temp;
+//}
+//void main()
+//{ 
+//    ComplexAdd c1(2,3), c2(4,-5), c3;
+//    cout<<"c1=";
+//    c1.show();
+//    cout<<"c2=";
+//    c2.show();
+//    c3 = c1 + c2;
+//    cout<<"c3=";
+//    c3.show();
+//}
+
+
+//=====================成员函数方式运算符重载===========================
+//class ComplexAdd
+//{
+//    double Real, Image;
+//public:
+//	ComplexAdd(double r=0, double i=0)
+//	{ 
+//		Real=r; Image=i; 
+//	}
+//	ComplexAdd operator + (ComplexAdd c2);          
+//	void show()
+//	{   
+//		cout<<Real;
+//		if(Image>0)
+//		{
+//			cout<<'+'<<Image<<'i';
+//		} 
+//		else if(Image<0) 
+//		{
+//			cout<<Image<<'i';
+//		}
+//		cout<<endl; 
+//	}
+//};
+//ComplexAdd ComplexAdd::operator+ (ComplexAdd c2) 
+//{
+//     ComplexAdd  temp;
+//     temp.Real=Real+c2.Real; 
+//     temp.Image=Image+c2.Image; 
+//     return temp;
+//}
+//void main()
+//{ 
+//    ComplexAdd c1(2,3), c2(4,-5), c3;
+//    cout<<"c1=";
+//    c1.show();
+//    cout<<"c2=";
+//    c2.show();
+//    c3 = c1 + c2;
+//    cout<<"c3=";
+//    c3.show();
+//}
+// 
+
+
+
+

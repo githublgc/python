@@ -1,0 +1,303 @@
+#include<iostream>
+using namespace std;
+
+
+//===========================简单继承的构造函数======================
+//class CA
+//{
+//	int a;
+//public:
+//	CA(int n)
+//	{
+//		a=n; 
+//		cout<<"CA::a="<<a<<endl;
+//	}
+//	~CA()
+//	{
+//		cout<<"CAobj is destructing."<<endl;
+//	}
+//};
+//
+//class CC:public CA
+//{
+//	int c;
+//public:
+//	CC(int n1,int n2):CA(n2)   //构造函数要使用初始化列表
+//	{
+//		c=n1; 
+//		cout<<"CC::c="<<c<<endl;
+//	}
+//	~CC()
+//	{
+//		cout<<"CCobj is destructing."<<endl;
+//	}
+//	void print()
+//	{
+//		//cout<<a;   //不可访问
+//	}
+//};
+//
+//void main()
+//{
+//	CC CDobj(2,4);
+//}
+
+
+
+
+//=======================多重和多级继承的构造函数==================
+//class CA
+//{
+//public:
+//	int a;
+//	CA(){cout<<"无参"<<endl;}  //无参构造
+//	CA(int n){a=n; cout<<"CA::a="<<a<<endl;}  //普通构造
+//	CA(const CA &obj1){a=obj1.a;cout<<"拷贝"<<endl;}  //拷贝
+//	~CA(){cout<<"CAobj is destructing."<<endl;}  //析构
+//};
+//class CB
+//{
+//	int b;
+//public:
+//	CB(int n){b=n; cout<<"CB::b="<<b<<endl;}
+//	~CB(){cout<<"CBobj is destructing."<<endl;}
+//};
+//class CC:public CA
+//{
+//	int c;
+//public:
+//	CC(int n1,int n2):CA(n2){c=n1; cout<<"CC::c="<<c<<endl;}
+//	//CC(const CC &obj2){c=obj2.c; cout<<"浅拷贝"<<endl;}  //浅拷贝
+//	CC(const CC &obj2):CA(obj2){c=obj2.c; cout<<"深拷贝"<<endl;}  //深拷贝
+//	~CC(){cout<<"CCobj is destructing."<<endl;}
+//};
+//class CD:public CB,public CC
+//{
+//	int d;
+//	CA aa1;
+//	CA aa2;
+//public:
+//	CD(int n1,int n2,int n3,int n4,int n5,int n6):CB(n1),CC(n2,n3)
+//	{aa1.a = n5; aa2.a=n6; d=n4; cout<<"CD::d="<<d<<endl;}
+//	~CD(){cout<<"CDobj is destructing."<<endl;}
+//};
+//
+//void main()
+//{
+//	CA a1(5);
+//	CA a2(7);
+//	CC c1(3,4);
+//	CC c2=c1;
+//	CD CDobj(2,4,6,8,5,7);
+//	//cout<<"hello";
+//}
+
+////==========================友元函数不继承===================================
+//class CA
+//{
+//	int a;
+//public:
+//	CA(){cout<<"haha";}
+//	CA(int n){a=n; cout<<"CA::a="<<a<<endl;};
+//	~CA(){cout<<"CAobj is destructing."<<endl;};
+//	friend void CAF(CA CAobj);//基类的友元函数
+//};
+//
+//class CC:public CA
+//{
+//	int c;
+//public:
+//	CC(int n1,int n2):CA(n2){c=n1; cout<<"CC::c="<<c<<endl;};
+//	~CC(){cout<<"CCobj is destructing."<<endl;};
+//};
+//void CAF(CA CAobj)
+//{
+//	cout<<"FrinedC::a="<<CAobj.c<<endl; //报错
+//}
+//
+//void main()
+//{
+//	//CA CAobj(1);
+//	//CAF(CAobj);
+//	CC CCobj(2,4);
+//	CAF(CCobj);    
+//	cout<<"";
+//}
+
+
+
+//=======================================二义性==================================
+//class CB1  //基类1
+//{
+//public:
+//	int a; 
+//	CB1(int x){a=x;}
+//	void showa(){cout<<"Class CB1 ==> a="<<a<<endl;}
+//}; 
+//class CB2   //基类2
+//{
+// public:
+//	int a; 
+//	CB2(int x){a=x;}
+//	void showa(){cout<<"Class CB2 ==> a="<<a<<endl;}
+//};
+//
+//class CD1:public CB1   //派生类1，继承基类1
+//{
+//public:
+//	int a;      //与基类同名成员变量a
+//	CD1(int x, int y): CB1(x){a=y;}
+//  void showa(){cout<<"Class CD1 ==> a="<<a<<endl;} //与基类同名成员函数showa()
+//	void print2a()  //打印同名函数的方法
+//	{
+//		cout<<"a="<<a<<endl;   //默认为派生类的a 
+//		cout<<"CB1::a="<<CB1::a<<endl;   //加限定，调用基类的a
+//	}
+//};
+//
+//class CD2:public CB1,  public CB2  //派生类1，继承基类1和基类2
+//{
+//public:
+//	int a;  //与两个基类都同名成员变量a    
+//	CD2(int x, int y, int z): CB1(x), CB2(y) {a=z;}
+//    void showa(){cout<<"Class CD2 ==> a="<<a<<endl;} 
+//	与两个基类都同名成员函数showa()
+//	void print3a() //打印同名函数的方法
+//	{
+//		cout<<"a="<<a<<endl; //默认为派生类的a
+//		cout<<"CB1::a="<<CB1::a<<endl;  //加限定，调用指定基类的a
+//		cout<<"CB2::a="<<CB2::a<<endl; //加限定，调用指定基类的a
+//	}
+//};
+//void main() 
+//{
+//	cout<<"======基类1的对象======="<<endl;
+//	CB1 CB1obj(11);
+//	CB1obj.showa();
+//
+//	cout<<"======派生类1（继承基类1）的对象======="<<endl;
+//	CD1 CD1obj(77,88);
+//	CD1obj.showa();  //同名，默认派生类
+//	CD1obj.CB1::showa();  //基类
+//	CD1obj.print2a();
+//	cout<<"CD1obj.a="<<CD1obj.a<<endl;
+//	cout<<"CD1obj.CB1::a="<<CD1obj.CB1::a<<endl;  //限定，基类
+//
+//	cout<<"======派生类2（继承基类1和基类2）的对象======="<<endl;
+//	CD2 CD2obj(111,222,999);
+//	CD2obj.showa(); //同名，默认派生类
+//	CD2obj.CB2::showa();  //同名，默认派生类
+//	CD2obj.print3a();
+//	cout<<"CDobj.a="<<CD2obj.a<<endl;
+//	cout<<"CDobj.CB1::a="<<CD2obj.CB1::a<<endl; //限定，基类
+//	cout<<"CDobj.CB2::a="<<CD2obj.CB2::a<<endl; //限定，基类
+//}
+//
+
+
+
+//===================================抽象基类和纯虚函数==============================
+//const double Pi = 3.14;
+////抽象基类
+//class Circle 
+//{
+//public:
+//	double r;
+//	Circle(double r1)
+//	{
+//		this->r=r1;
+//		cout<<"圆面半径为:"<<this->r<<endl;
+//	}  
+//	//虚函数,就是一个原型，什么都不做。用基类指针调用 
+//	virtual void getS(){};
+//	//纯虚函数 圆没有体积 计算毫无意义
+//	virtual void getV()=0;
+//};
+//class Cylinder :virtual public Circle
+//{
+//public:
+//	double height;
+//public:
+//	Cylinder(double r,double h):Circle(r)
+//	{
+//		this->height=h;
+//		cout<<"圆柱的高为:"<<this->height<<endl;
+//	}
+//	//虚函数！因为同名且参数个数一样。否则就是重载！
+//	void getS()	
+//	{
+//		cout<<"圆柱表面积为："<<2*this->r*this->r*Pi+2*this->r*Pi*this->height<<endl;
+//	}
+//	void getV()	
+//	{
+//		cout<<"圆柱体积为："<<this->r*this->r*Pi*this->height<<endl;
+//	}
+//};
+//class Cone  :virtual public Circle
+//{
+//	double height;
+//public:
+//	Cone(double r,double h):Circle(r)
+//	{
+//		this->height=h;
+//		cout<<"圆锥的高为:"<<this->height<<endl;
+//	}
+//	//虚函数！因为同名且参数个数一样。否则就是重载！
+//	void getS()	
+//	{
+//		//S=πr²+πrl   l²=r²+h²
+//		cout<<"表面积为："<<this->r*this->r*Pi+Pi*r*sqrt(this->r*this->r+height*height)<<endl;
+//	}
+//	void getV()	
+//	{
+//		cout<<"体积为："<<this->r*this->r*Pi*this->height/3<<endl;
+//	}
+//};
+//class Ball  :virtual public Circle
+//{
+//public:
+//	Ball(double r):Circle(r){}
+//	//虚函数！因为同名且参数个数一样。否则就是重载！
+//	void getS()	
+//	{
+//		cout<<"表面积为："<<this->r*this->r*Pi*4<<endl;
+//	}
+//	void getV()	
+//	{
+//		cout<<"体积为："<<this->r*this->r*this->r*Pi*4/3<<endl;
+//	}
+//};
+//void main()
+//{
+//	//基类指针
+//	Circle *c1;
+//	//Circle c1(2.0);   //抽象类型不允许使用对象
+//	//c1->getS();        //同理
+//	//c1->getV();       //纯虚函数不能直接被调用
+//
+//	//派生类对象
+//	Cylinder cy1(2.0,2.0);
+//	//Cylinder cy2(3.0,4.0);
+//	//基类指针指向派生类对象
+//	c1 = &cy1;
+//	//调用虚函数
+//	c1->getS();
+//	c1->getV();
+//	cout<<endl;
+//
+//	Cone co1(2.0,2.0);
+//	//Cone co2(3.0,4.0);
+//	c1 = &co1;
+//	c1->getS();
+//	c1->getV();
+//	cout<<endl;
+//
+//	Ball b1(1.0);
+//	//Ball b2(5.0);
+//	c1 = &b1;
+//	c1->getS();
+//	c1->getV();
+//	cout<<endl;
+//
+//}
+

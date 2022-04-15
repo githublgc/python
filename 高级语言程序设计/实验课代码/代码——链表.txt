@@ -1,0 +1,96 @@
+#include<iostream>
+using namespace std;
+class Node
+{
+public:	
+	int num;
+	Node *next;
+	Node(int n){num = n; next = NULL;};
+	~Node();
+};
+class List
+{
+	Node *head;
+	Node *tail;
+    static int numberOfNode;
+public:
+	List()
+	{
+		head  = tail = NULL;
+		numberOfNode = 0;
+	}
+	void Insert(int n);
+	void Remove(int n);
+	void Search(int n);
+	void Edit(int n);
+	void Print();
+};
+
+void List::Insert(int n)
+{
+	Node * tmp = new Node(n);
+	if(head == NULL)
+	{
+		head = tail = tmp;
+		numberOfNode++;
+	}
+	else
+	{
+		if(n<head->num)
+		{
+			tmp->next = head;
+			head = tmp;
+			numberOfNode++;
+			return;
+		}
+		if(n>tail->num)
+		{
+			tail->next = tmp;
+			tail = tmp;
+			numberOfNode++;
+			return;
+		}
+		Node *curr = head;
+		while(curr->next != NULL)
+		{
+			if(curr->num<=n && curr->next->num>n)
+		    {
+			    tmp->next = curr->next;
+				curr->next = tmp;
+				numberOfNode++;
+			    return;
+		    }
+			curr = curr->next;
+		}
+	}
+}
+
+void List::Print()
+{
+	Node *curr = head;
+	while(curr->next != NULL)
+	{
+		cout<<curr->num<<" ";
+		curr = curr->next;
+	}
+	if(curr->next==NULL)
+	{
+		cout<<curr->num;
+	}
+	cout<<endl;
+	cout<<numberOfNode<<endl;
+}
+
+int List::numberOfNode =0;
+void main()
+{
+	List list;
+	int tmp;
+	while(cin>>tmp)
+	{
+		if(tmp == 0) 
+			break;
+		list.Insert(tmp);
+	}
+	list.Print();
+}

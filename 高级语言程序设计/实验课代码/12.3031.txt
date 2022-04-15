@@ -1,0 +1,530 @@
+主要内容：
+
+1、cin用法
+
+2、cin.getline()用法
+
+3、getline()用法
+
+3、注意的问题
+
+ 
+
+一、cin>>
+用法1：输入一个数字或字符
+
+#include <iostream>
+using namespace std;
+main ()
+{
+int a,b;
+cin>>a>>b;
+cout<<a+b<<endl;
+}
+
+用法2：接收一个字符串，遇“空格”、“TAB”、“回车”就结束
+
+#include <iostream>
+using namespace std;
+main ()
+{
+char a[20];
+cin>>a;
+cout<<a<<endl;
+}
+
+输入：jkljkljkl
+输出：jkljkljkl
+
+输入：jkljkl jkljkl       //遇空格结束
+输出：jkljkl
+
+二、cin.getline()
+用法:接收一个字符串，可以接收空格并输出
+
+#include <iostream>
+using namespace std;
+main ()
+{
+char m[20];
+cin.getline(m,5);
+cout<<m<<endl;
+}
+
+输入：jkljkljkl
+输出：jklj
+
+接收5个字符到m中，其中最后一个为'\0'，所以只看到4个字符输出；
+
+如果把5改成20：
+输入：jkljkljkl
+输出：jkljkljkl
+
+输入：jklf fjlsjf fjsdklf
+输出：jklf fjlsjf fjsdklf
+
+延伸：
+1、cin.getline()实际上有三个参数，cin.getline(接收字符串的变量,接收字符个数,结束字符)
+2、当第三个参数省略时，系统默认为'\0'
+3、如果将例子中cin.getline()改为cin.getline(m,5,'a');当输入jlkjkljkl时输出jklj，输入jkaljkljkl时，输出jk
+
+三、getline()
+用法：接收一个字符串，可以接收空格并输出，需包含“#include<string>”
+
+#include<iostream>
+#include<string>
+using namespace std;
+main ()
+{
+string str;
+getline(cin,str);
+cout<<str<<endl;
+}
+
+输入：jkljkljkl
+输出：jkljkljkl
+
+输入：jkl jfksldfj jklsjfl
+输出：jkl jfksldfj jklsjfl
+
+四、注意的问题
+1、cin.getline()属于istream流，而getline()属于string流，是不一样的两个函数
+
+2、当同时使用cin>>,getline()时，需要注意的是，在cin>>输入流完成之后，getline()之前，需要通过
+
+str="\n";
+getline(cin,str);
+
+的方式将回车符作为输入流cin以清除缓存，如果不这样做的话，在控制台上就不会出现getline()的输入提示，而直接跳过，因为程序默认地将之前的变量作为输入流。
+
+看下面一段程序：
+
+/*-------------Basic Input/Output-------------*/
+#include<iostream>
+#include<string>
+#include<sstream>
+using namespace std;
+
+int main(){
+    int age;
+    //standard input(cin)
+    cout<<"Please enter an integer value as your age: ";
+    cin>>age;
+    cout<<"Your ager is: "<<age<<".\n";
+    //cin and string
+    string mystr;
+    cout<<"What's your name? "<<endl;
+   mystr="\n";
+    getline(cin,mystr);
+    getline(cin,mystr);
+    cout<<"Hello,"<<mystr<<".\n";
+    char sex;
+    cout<<"Please enter a F or M as your sex: ";
+    cin>>sex;
+    cout<<"Your sex is: "<<sex<<endl;
+    cout<<"What's your favorite team? ";
+    mystr="\n";
+    getline(cin,mystr);
+    getline(cin,mystr);
+    cout<<"I like "<<mystr<<".\n";
+
+    system("pause");
+    return 0;
+}
+
+模拟考试3
+#include<iostream>
+using namespace std;
+#include<string>
+int main()
+{
+	string s;
+	string res[50];
+	int index=0;
+	getline(cin,s);
+	string tmp="";//用于存放一个转换完大小写的单词空字符串。
+	for(int i=0;i<s.length();i++)
+	{char c=s[i];
+	if((c>='A')&&(c<='Z'))
+	{c=c+'a'-'A';//大写换小写
+	tmp+=c;}
+	else
+		if((c>='a')&&(c<='z'))
+		{tmp=tmp+c;}//这里在string下相当于是字符的链接+
+
+		//上面是只看在不在大小写范围内，如果不在就直接掠过。
+		else
+
+
+			if(tmp!="")
+			{
+				//只加“”中间不打空格，表示这是一个空字符串。当字符串不为空是，看看是不是已经找到的并存在res中的单词
+			bool isFind=false;
+			for(int i=0;i<index;i++)
+			{
+				if(tmp==res[i])
+				{isFind=true;
+				}
+			}
+			
+			if(!isFind)//如果没找到，那就单词个数加一
+			{
+			res[index++]=tmp;//新分配一串来存新词。res是字符串性数组，res[50]代表50个字符串，每处都可以放一个字符串。
+			
+			}
+			tmp="";//存完后把tmp置空，迎接下一个读入的单词。
+			}
+	
+	}//for循环的
+
+	if(tmp!="")
+	{
+	bool isFind=false;
+	for(int i=0;i<index;i++)
+	{
+	if(tmp==res[i])
+	{
+	isFind=true;
+	}
+	
+	}
+	//如果是新词
+	if(!isFind)
+	{
+		res[index++]=tmp;
+	}
+	}
+	for(int i=0;i<index-1;i++)
+	{cout<<res[i]<<" ";}
+	cout<<res[index-1]<<endl;
+	cout<<index;
+	return 0;
+}
+
+
+计算某日是全年第几天
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int year, month, day;
+    int res = 0;
+    cin >> year >> month >> day;
+
+    int days1[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int days2[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    bool isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 100 == 0 && year % 400 == 0);
+
+    if (isLeap)
+    {
+        if (month > 12 || day > days2[month - 1])
+        {
+            cout << "WRONG INPUT!" << endl;
+        }
+        else
+        {
+            for (int i = 0; i < month - 1; i++)//month从1开始，可数组从0计数，所以month-1是所在month，i《month-1是把在本月以前的所有天数先加起来
+            {
+                res += days2[i];
+            }
+            res += day;//加完前面的天数后，再把本月输入的天数加上即可。
+            cout << res << endl;
+        }
+    }
+    else
+    {
+        if (month > 12 || day > days1[month - 1])
+        {
+            cout << "WRONG INPUT!" << endl;
+        }
+        else
+        {
+            for (int i = 0; i < month - 1; i++)
+            {
+                res += days1[i];
+            }
+            res += day;
+            cout << res << endl;
+        }
+    }
+    return 0;
+}
+
+
+二分查找法
+
+
+#include <iostream>
+
+using namespace std;
+
+int half_search(int arr[], int i, int j, int search)//二分查找，i表示左边界开始从哪找，J表示最右边界在哪。向左找，j=j-1；向右找，I=I+1
+{
+    // 没有找到
+    if (i > j)//左面越过了右边还没找到，说明没有。
+    {
+        return -1;
+    }
+    int mid = (i + j) / 2;
+    int val = arr[mid];//val表明中间元素的对应数字，看他和要找的是否相等。
+    if (val == search)
+    {
+        return mid;
+    }
+    else if (val < search)
+    {
+        // 大于 朝右边找
+        return half_search(arr, mid + 1, j, search);
+    }
+    else
+    {
+        // 小于 朝左边找
+        return half_search(arr, i, mid - 1, search);
+    }
+}
+
+int main()
+{
+    int arr[100] = {0};
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    int search;
+    cin >> search;
+
+    bool isSorted = true;//先默认是有序，一旦要进入下面的if，就直接改判成false
+    // 冒泡排序 每次冒最大的
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                int tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+                isSorted = false;
+            }
+        }
+    }
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << arr[n - 1] << endl;//数字之间有空个，行尾无空格。
+
+    if (isSorted)
+    {
+        cout << "ordered ";
+    }
+    else
+    {
+        cout << "unordered ";
+    }
+
+    int index = half_search(arr, 0, n - 1, search);//调用后，index表示所招元素的下表
+
+    if (index == -1)
+    {
+        cout << "0 ";
+    }
+    else
+    {
+        cout << "1 ";
+    }
+    cout << index << endl;
+
+    return 0;
+}
+
+
+#include <iostream>//找到一个最长的字符串。
+#include <cstring>
+using namespace std;
+
+void print(char str[], int start, int end)
+{
+    for (int i = start; i <= end; i++)
+    {
+        cout << str[i];
+    }
+    cout << endl;
+}
+
+int main()
+{
+    char str[100];
+    // 获取整行输入
+    cin.getline(str, 100);
+    int length = strlen(str);
+
+    int start = -1, end = -1;
+    int res_start = -1, res_end = -2;
+    for (int i = 0; i < length; i++)
+    {
+        // 遇到的是空格
+        if (str[i] == ' ')
+        {
+            // start != -1 说明已经在记录字符串，此时遇到空格应该停止记录，比较长度并重置记录状态，再输出空格
+            if (start != -1)
+            {
+                end = i - 1;
+                if (end - start > res_end - res_start)//出现更长的字符串后
+                {
+                    res_start = start;
+                    res_end = end;
+                }
+                start = end = -1;
+            }
+            // start == -1 说明没有记录字符串，此时遇到空格跳过
+        }
+        // 遇到的不是空格
+        else
+        {
+            // start == -1 说明没有记录字符串，此时遇到非空格字符，就开始记录
+            if (start == -1)
+            {
+                start = i;
+            }
+        }
+    }
+    // 判断一下最后一组输出
+    if (start != -1)
+    {
+        end = length - 1;
+        if (end - start > res_end - res_start)
+        {
+            res_start = start;
+            res_end = end;
+        }
+    }
+    print(str, res_start, res_end);
+
+    return 0;
+}
+
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void reverse_print(char str[], int start, int end)
+{
+    for (int i = end; i >= start; i--)//反向输入，只需要将i=N，i》0，I--来实现。
+    {
+        cout << str[i];
+    }
+    
+}
+
+int main()
+{
+    char str[40];
+    // 获取整行输入
+    cin.getline(str, 40);
+    int length = strlen(str);
+
+    int start = -1, end = -1;
+    for (int i = 0; i < length; i++)
+    {
+        // 遇到的是空格
+        if (str[i] == ' ')
+        {
+            // start != -1 说明已经在记录字符串，此时遇到空格应该反转输出字符串并重置记录状态，再输出空格
+            if (start != -1)
+            {
+                end = i - 1;
+                reverse_print(str, start ,end);
+                start = end = -1;
+            }
+            // start == -1 说明没有记录字符串，此时遇到空格输出空格
+            cout << ' ';
+        }
+        // 遇到的不是空格
+        else
+        {
+            // start == -1 说明没有记录字符串，此时遇到非空格字符，就开始记录
+            if (start == -1)
+            {
+                start = i;
+            }
+        }
+    }
+    // 判断一下最后一组输出
+    if (start != -1)
+    {
+        end = length - 1;
+        reverse_print(str, start, end);
+    }
+
+    return 0;
+}
+
+#include <iostream>
+#include<cstring>
+using namespace std;
+void print(char str[],int start,int end)//自定义函数可以先不写数组大小
+{
+	for(int i=start;i<=end;i++)
+		cout<<str[i];
+}
+
+int main()
+{
+	char str[100];//在主函数中字符数组是要标出大小的
+	cin.getline(str,100);
+	int length=strlen(str);
+	int start=-1,end=-1;
+	int resstart=-1,resend=-1;
+
+	for(int i=0;i<length;i++)
+	{
+	if(str[i]==' ')//。。注意char类型STR在1.两个才是等于==时2.‘ ’ 单引号。
+	{
+	if(start!=-1)
+	{
+	end=i-1;
+	if((end-start)>(resend-resstart))
+	{
+	resstart=start;
+	resend=end;
+	
+	}
+	start=end=-1;//注意，这里在记录完所有之后，需要把start，end两个用来计算其中一个单词的都重新标记成—1这种未开始记录的状态。
+	}
+	
+	}
+	else
+		{if(start==-1)
+		{
+		
+		start=i;
+		
+	}}//如果遇到的不是空格，只需要把start置位成I就可以了。
+
+	
+	
+	}
+	//最后注意要判断一下最后一行的输出
+	if (start != -1)
+    {
+        end = length - 1;
+        if (end - start > resend - resstart)//这里很巧妙的时，如果一样长就输出前面的，那么只要要求不超过最长的就不换就可以保障。
+        {
+            resstart = start;
+            resend = end;
+        }
+    }
+	print(str,resstart,resend);//调用函数注意要后面加分号。
+		return 0;
+
+}

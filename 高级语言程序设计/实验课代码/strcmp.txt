@@ -1,0 +1,17 @@
+
+注意，这样输入每次输一个字母就要回车一下才行
+strcmp是相等为0，小于-1，大于1
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	char s1[10],s2[10];
+	for (int i = 0; i < 5; i++)
+		cin >> s1;
+	for (int j = 0; j < 5; j++)
+		cin >> s2;
+	int p=strcmp(s1, s2);
+	cout << p;
+	
+}

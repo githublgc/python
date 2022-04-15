@@ -1,0 +1,164 @@
+
+A,B类数，
+#include<iostream>
+#include<iomanip>//保留一位小数需要的头文件。
+using namespace std;
+int main()
+{
+	int n,k;
+	double sum1=0,sum2=0,count1=0,count2=0;
+	cin>>n>>k;
+	int a[10000],b[10000];
+	for(int i=1;i<=n;i++)
+	{
+		if(i%k==0)
+		{
+		sum1=sum1+i;
+		count1=count1+1;
+		}
+		else
+		{
+		
+		sum2=sum2+i;
+		count2=count2+1;
+		}
+	
+	
+	
+	}
+	 cout << setiosflags(ios::fixed)<< setprecision(1);//保证只保留一位小数精度的输出方式
+	cout<<(sum1/count1)<<" "<<(sum2/count2);
+}
+
+
+输出问题：
+#include<iostream>
+
+using namespace std;
+int main()
+{
+	int n,count=0;
+	int a[101];
+	for(int i=0;;i++)/！！经典做法
+	{
+		cin>>n;
+		a[i]=n;
+		if(a[i]==0)
+			break;//这里是不指定输入多少个数，就是随机输入n个数，然后遇到0就停下的输入方式
+		count=count+1;
+	
+	}
+
+	for(int i=count-1;i>=0;i--)
+	{
+
+	cout<<a[i]<<" ";
+	
+	}
+	return 0;
+}
+
+字符串大小写互换（小写变大写）的问题-》用string
+
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	string s;
+	getline(cin,s);//这样保证了不规定输入个数和终止条件下的直接输入到字符串s中
+	string tmp="";//需要额外叫一个空字符串来接受新的字符串
+	for(int i=0;i<s.length();i++)//s.length()可以直接计算出字符串大小
+	{
+		char c=s[i];
+		if((c>='a')&&(c<='z'))
+		{c=c-'a'+'A';}//这种可以，直接32也可以
+		tmp=tmp+c;
+		
+	}
+	
+		cout<<tmp;//直接输出的是新的tmp串而不是原来的s
+	return 0;
+}
+
+#include<iostream>
+#include<string>//凯撒密码，向后转动来对应密文
+#include<cstring>
+using namespace std;
+int main()
+{
+	int n;
+	
+	char a[100];
+	
+	cin>>n>>a;//一个数组A，cin>>a就可以实现对数组不用设计限制的情况下向里面输入文本。
+	
+	int length=strlen(a);
+	for(int i=0;i<length;i++)
+	{
+		char c=a[i];
+		c=c+n;
+		
+		
+
+		if(c>122||c<0)//注意c可能在运算时输入的负值
+		{c=c%122+96;}//可能出现向后1000等大数，那么就需要进行多次的循环，故不可以直减26
+
+		a[i]=c;
+		
+		}
+	for(int i=0;i<length;i++)
+	
+	{cout<<a[i];}
+	return 0;
+}
+
+#include<iostream>
+#include<string>
+#include<cstring>
+using namespace std;
+int main()
+{
+	char s[20],a[20];
+	int sum,count=0;
+	cin>>s;
+	for(int i=0;i<13;i++)
+	{a[i]=s[i];}
+	for(int i=0;i<11;i++)
+	{
+		
+	if(s[i]=='-')//判断相等！！双等号！
+		continue;
+	else
+		{count=count+1;
+		
+		s[i]=(s[i]-48)*count;}//字符和数字的转换，ASCII0对应48，剪掉48即可得到。
+	}
+		sum=s[0]+s[2]+s[3]+s[4]+s[6]+s[7]+s[8]+s[9]+s[10];
+		
+		sum=sum%11;
+		if(s[12]!='X')
+		s[12]=s[12]-48;
+		else
+			{if(sum==10)
+			cout<<"Right";
+			else
+				{s[12]=sum+78;
+				a[12]=s[12];
+				for(int i=0;i<13;i++)
+				cout<<a[i];
+		}}
+		
+		if((sum==s[12])&&(sum!=10))//注意潜在条件，10对应X！
+		cout<<"Right";
+		if((sum!=s[12])&&(sum!=10))
+		{
+			
+			s[12]=sum+48;
+			a[12]=s[12];
+			
+			for(int i=0;i<13;i++)
+				cout<<a[i];
+		}
+		return 0;
+}
