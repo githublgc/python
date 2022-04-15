@@ -1,0 +1,248 @@
+第八章作业1感悟：
+特别注意，#include<cstring> ，char a[1000],cin>>a ,strlen(a)也是可以实现string的效果的
+但同时，可以有效地用cin的方式，遇到空格，换行，tab就停下来的特性。
+（这就是主要功能对，但是只用string getline(cin ,s)却永远报错的解决方式）
+
+string的好处在于进行了封装，也就是可以直接进行》，==等字符串比较
+string s1;
+	cin >> s1;
+	string s2;
+	cin >> s2;
+	if (s1 == s2)
+		cout << 1;//经过实验，完全可行！
+
+屏幕上直接输入一串数据
+要求，将数据中的素数选出来，并且无重复从小到大排列行尾无空格输出
+#include <iostream>
+#include<iomanip>
+#include<string>
+#include<cmath>
+using namespace std;
+bool Isprime(int m)
+{
+	for (int i = 2; i < m; i++)
+	{
+		if (m%i == 0)
+			return false;
+	}
+	return true;
+}
+
+int main()
+{
+	//string s;
+	//getline(cin, s);
+	//int a[200];
+	//int j = 0, n = 0;//J，存放数字的数组A的变量器；n，计数输入数字个数。
+	//for (int i = 0; i < s.length(); i++)
+	//{
+	//	if (s[i] == ' ')//注意，这样只能是字符输入，23会输出2 3这样。
+	//		continue;
+	//	else
+	//	{
+	//		a[j] = s[i];
+	//		j++;
+	//		n++;
+	//	}
+	//}
+	//cout << n << endl;
+	//for (int i = 0; i < n; i++)
+	//{
+	//	cout << a[i] << " ";
+	//}
+
+
+
+	int i = 0, n = 0;
+	int a[200];
+	while (cin >> a[i])//用来直接读取输入的数据文本
+	{
+		n++; i++;
+	}//成功实现输入
+	
+
+	
+		int b[100]; int j = 0; int count = 0;
+		for (int i = 0; i < n; i++)
+	
+		{
+			if (a[i] < 2)
+				continue;
+			else
+				if (Isprime(a[i]))
+				{
+					b[j] = a[i]; j++; count++;
+				}
+		}//成功分离非素数
+		
+		for (int i = 0; i < count; i++)//下面都是针对B的，一共有count个
+		{
+			for (int j = count - 1; j > i; j--)
+			{
+				if (b[j - 1] > b[j])
+				{
+					int temp = b[j];
+					b[j] = b[j - 1];
+					b[j - 1] = temp;
+				}
+	
+			}
+		}//先对所有冒泡排序，再去重
+
+		int w = 0;//设定重复值个数
+
+		for (int i = 0; i < count - w - 1; i++)//最后只循环遍历去重后的个数，由于下面是当前项和+1项对比
+			//所以这里是原始count-1.
+		{
+	
+			if (b[i] == b[i + 1])
+			{
+				w = w + 1;//当前项和后一项重复，重复个数计数w+1.
+				for (int j = 0; j < count - 2 - i; j++)//此后，需要把从重复项之后所有项重新排列
+					//所有的都向前挪1项，从i开始向后数j，i+j的后一项位置用后第二项填上。
+					//因为前面是和后一项比的，所以关注的是后一项和后第二项。
+				{
+					b[i + j + 1] = b[i + j + 2];
+				}
+				i = i - 1;//当所有的移动完成后，由于整体前移1位，所以用来标记的i也要-1；
+			}
+	
+	
+		}
+		cout << b[0];
+		for (int i = 1; i < count - w; i++)
+		{
+			cout << " " << b[i];//行尾无空格的写法。
+		}
+	
+	
+}
+
+
+
+2.判断两个线段的长度，是否与坐标轴相交，是否平行
+#include <iostream>
+#include<iomanip>
+#include<string>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+	int e11, e12, e21, e22, e31, e32, e41, e42;
+	cin >> e11 >> e12 >> e21 >> e22;
+	double l1, l2, m1, m2, n11, n12, n21, n22, p, q;//1,2
+	m1 = (e11 - e21)*(e11 - e21) + (e12 - e22)*(e12 - e22);
+	l1 = sqrt(m1);
+	n11 = e11 * e21; n12 = e12 * e22;
+	if (n11 <= 0 || n12 <= 0)
+		p = 1;
+	else
+		p = 0;//是否和坐标轴相交
+
+	cin >> e31 >> e32 >> e41 >> e42;//3,4
+	m2 = (e31 - e41)*(e31 - e41) + (e32 - e42)*(e32 - e42);
+	l2 = sqrt(m2);
+	n21 = e31 * e41; n22 = e32 * e42;
+	if (n21 <= 0 || n22 <= 0)//是否与坐标轴相交
+		q = 1;
+	else
+		q = 0;
+	//快速排斥实验和叉积跨立判断线段是否相交
+	//int r;//1代表平行，0代表不平行
+	//int max1x, min1x,max1y,min1y, max2x, min2x,max2y,min2y;
+	//if (e11 > e21)
+	//{
+	//	max1x = e11;
+	//	min1x = e21;
+	//}
+	//else
+	//{
+	//	max1x = e21;
+	//	min1x = e11;
+	//}
+	//if (e12 > e22)
+	//{
+	//	max1y = e12;
+	//	min1y = e22;
+
+	//}
+	//else
+	//{
+	//	max1y = e22;
+	//	min1y = e12;
+	//}//1,2,L1
+	//if (e31 > e41)
+	//{
+	//	max2x = e31;
+	//	min2x = e41;
+	//}
+	//else
+	//{
+	//	max2x = e41;
+	//	min2x = e31;
+	//}
+	//if (e32 > e42)
+	//{
+	//	max2y = e32;
+	//	min2y = e42;
+
+	//}
+	//else
+	//{
+	//	max2y = e42;
+	//	min2y = e32;
+	//}
+	//if(max1x<min2x||max1y<min2y||max2x<max1x||max2y<max1y)//任意一个为真，都证明肯定不可交。
+
+
+		
+	int r;//注意平行状态下怎么保证不共线的问题。现在这个总是4AC，有一个不行。
+	if (e21 == e11 && e31 == e41&&e22!=e12&&e32!=e42)//斜率不存在时
+	{
+		if (e21 != e31)//X不相同就是不重合，即平行
+			r = 1;
+		else 
+			r = 0;
+	}
+	if ((e21 == e11 && e31 != e41&&e12!=e22) || (e21 != e11 && e31 == e41&&e32!=e42))//一个斜率存在一个斜率不存在
+		r = 0;
+	if (e21 != e11 && e31 != e41)//斜率都存在时
+	{
+		double k1, k2;
+		k1 = (e22 - e12) / (e21 - e11);
+		k2 = (e42 - e32) / (e41 - e31);
+		double b1, b2;//截距
+		b1 = e22 - k1 * e21;
+		b2 = e42 - k2 * e41;
+
+		
+		
+		if (k1 == k2)//斜率相同
+		{
+			if (b1 == b2)//截距相同则重合
+				r = 0;
+			else
+				r = 1;
+
+		}
+		if (k1 != k2)//斜率不同
+			r = 0;
+	}
+	if ((e11 == e21 && e12 == e22) || (e31 == e41 && e32 == e42))//一个线段是点
+	{
+		//if ((e11 == e31) || (e12 == e32))//点重，不平行，不重就平行。
+		//	r = 0;
+		//else
+			r = 1;//只要一个是点就平行，不需要判断点和点，两个点的问题，想的太复杂了！
+		
+
+	}
+	cout << fixed << setprecision(2) << l1 << " ";
+	cout << fixed << setprecision(0) << p << endl;
+	cout << fixed << setprecision(2) << l2 << " ";
+	cout << fixed << setprecision(0) << q << endl;
+	cout << r;
+}
+
+
