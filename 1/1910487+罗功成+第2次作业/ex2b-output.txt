@@ -1,0 +1,52 @@
+Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)] on win32
+
+ RESTART: D:\LGC信息与基本资料\NKU南开大学学习资源库\3.大三（津南）：信息安全\大三上\区块链\比特币\all exersise\ex2b.py 
+201 Created
+{
+  "tx": {
+    "block_height": -1,
+    "block_index": -1,
+    "hash": "3aeb8031f764c6a2049a3ed11d231fc88ee38a6b3ce3e628414973fe5eb9087d",
+    "addresses": [
+      "zSqWBRYLuvG83HgyARP9X1Kh5eRHiztYFA",
+      "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB"
+    ],
+    "total": 10000,
+    "fees": 30000,
+    "size": 305,
+    "vsize": 305,
+    "preference": "high",
+    "relayed_by": "2001:250:401:6601:11b2:fe78:f01c:3c24",
+    "received": "2021-10-31T02:29:29.861076987Z",
+    "ver": 1,
+    "double_spend": false,
+    "vin_sz": 1,
+    "vout_sz": 1,
+    "confirmations": 0,
+    "inputs": [
+      {
+        "prev_hash": "50f0ab7a906be40746c0a9632cabbca28c2f45b0c6e5b32695582c72a356dc43",
+        "output_index": 0,
+        "script": "00483045022100cc946971fd1bee9b8ffed69d89ee467174906d52fde53a6c67355a350b9c8fb402202e6b46d60b6a3a8d4b713fc272f759b3c80034da172d803f9d2b03b5e410baba0148304502210082db29616d4da2eb1843a8448c86f9633f5d54b4e76fc68611e5cbb6d3e1472a02201d480516e8eedd91fef44e416acecc9ea0c483341feb86a6aead598efbd649d001483045022100d4f6f00409e59f87924e15ea7e20a3effd0c5d29245b0c00c7ac739f38b24c9702202f6437fc21dac64703fde4f53e7e0562c1066b8d6b673284ff50244c3b5fcd0201",
+        "output_value": 40000,
+        "sequence": 4294967295,
+        "addresses": [
+          "zSqWBRYLuvG83HgyARP9X1Kh5eRHiztYFA"
+        ],
+        "script_type": "pay-to-multi-pubkey-hash",
+        "age": 2101670
+      }
+    ],
+    "outputs": [
+      {
+        "value": 10000,
+        "script": "76a9149f9a7abd600c0caa03983a77c8c3df8e062cb2fa88ac",
+        "addresses": [
+          "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      }
+    ]
+  }
+}
+>>> 

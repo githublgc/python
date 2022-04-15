@@ -1,0 +1,140 @@
+BOB BTC：
+Private key: cV5RE2dvayfZ6sSYqsFkfGQzQ3mgba4UdNrEiBWqah46eDSwpd6L
+Address: muPM5XPziXiuQRYT6AcxrNLdzauTWA6K67
+
+
+BCY Token a71862318a9a4644bc49f24e8a70dfff
+curl -X POST https://api.blockcypher.com/v1/bcy/test/addrs?token=a71862318a9a4644bc49f24e8a70dfff
+{
+  "private": "0b0bf054ee2bbcb71bb12c19ae10719f7cde2d0693b7c3342ec887b168b165e8",
+  "public": "03d4e724170a7c6a5ef4d33c2ad116dae2dfc816454ef4f8b496bc87fa9fa8ffc6",
+  "address": "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA",
+  "wif": "BohWBgZnqKNC1LkFnxa2QcMaSP3zYVgVVsTXdMW7H66mYTj4uzaL"
+}
+
+ curl -d '{"address":"CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA", "amount": 1000000}' 
+https://api.blockcypher.com/v1/bcy/test/faucet?token=a71862318a9a4644bc49f24e8a70dfff
+{
+  "tx_ref": "f0cc6d1b83ce661d829ea74cee2354228eb79614ff19a1ad6bbb841388d055b1"
+}
+
+python3 split_test_coins.py
+201 Created
+{
+  "tx": {
+    "block_height": -1,
+    "block_index": -1,
+    "hash": "9702d497d3647d3eccc7729cd1a34b3583e52f5de47952b79226cde41bf37b6f",//分币的交易hash，里面0-9下标对应10个,每个max0.0008(9)
+    "addresses": [
+      "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+    ],
+    "total": 900000,
+    "fees": 100000,
+    "size": 497,
+    "vsize": 497,
+    "preference": "high",
+    "relayed_by": "60.29.153.53",
+    "received": "2021-12-08T14:54:20.360438889Z",
+    "ver": 1,
+    "double_spend": false,
+    "vin_sz": 1,
+    "vout_sz": 10,
+    "confirmations": 0,
+    "inputs": [
+      {
+        "prev_hash": "f0cc6d1b83ce661d829ea74cee2354228eb79614ff19a1ad6bbb841388d055b1",
+        "output_index": 0,
+        "script": "4730440220268ac18da3f2e706117d38392ffbeca87680f4e2778d2285b9c6cd7a211abb5202202fe8902a8934acb7655928498064afd6a309db15906eaf39ca86ce90638f249e012103d4e724170a7c6a5ef4d33c2ad116dae2dfc816454ef4f8b496bc87fa9fa8ffc6",
+        "output_value": 1000000,
+        "sequence": 4294967295,
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash",
+        "age": 63176
+      }
+    ],
+    "outputs": [
+      {
+        "value": 90000,
+        "script": "76a914d4df3288c530e42c7bb3a492f9369b53eea9274288ac",
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      },
+      {
+        "value": 90000,
+        "script": "76a914d4df3288c530e42c7bb3a492f9369b53eea9274288ac",
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      },
+      {
+        "value": 90000,
+        "script": "76a914d4df3288c530e42c7bb3a492f9369b53eea9274288ac",
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      },
+      {
+        "value": 90000,
+        "script": "76a914d4df3288c530e42c7bb3a492f9369b53eea9274288ac",
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      },
+      {
+        "value": 90000,
+        "script": "76a914d4df3288c530e42c7bb3a492f9369b53eea9274288ac",
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      },
+      {
+        "value": 90000,
+        "script": "76a914d4df3288c530e42c7bb3a492f9369b53eea9274288ac",
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      },
+      {
+        "value": 90000,
+        "script": "76a914d4df3288c530e42c7bb3a492f9369b53eea9274288ac",
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      },
+      {
+        "value": 90000,
+        "script": "76a914d4df3288c530e42c7bb3a492f9369b53eea9274288ac",
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      },
+      {
+        "value": 90000,
+        "script": "76a914d4df3288c530e42c7bb3a492f9369b53eea9274288ac",
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      },
+      {
+        "value": 90000,
+        "script": "76a914d4df3288c530e42c7bb3a492f9369b53eea9274288ac",
+        "addresses": [
+          "CCXrDdNZBbCQUbLyJF4WSSQ1xrV4s7VaLA"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      }
+    ]
+  }
+}

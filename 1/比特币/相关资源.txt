@@ -1,0 +1,23 @@
+需要的模块：pip install xxx
+python-bitcoinlib
+requests
+
+0，1，9已经使用
+
+压缩包密码Blockchain2021
+新Private key: cQhtgnRw36AD3bkh1TVorPNzBxo9FWDu3kPUuaCeTMFo4uaMRVL5
+Address: mxBXw327nU6AZvPPEND9R74RVTwp332uXo
+收到的txid hash:301e3b4f48daaebc9040debb32f54104b254fd01fca5d33fb6d40889ff37399e
+txid to spend: 75988613a832385a4be56c032e0659419e04e04731437248d9fdd424b3419c8a 
+utxo_index:第几笔交易，0已经用了，注意每次要留一点做小费！6+确认才行
+
+生成的客户的私钥和地址：
+客户1Private key: cU5mpRfWCBtM6QAwK7ApTw9bQdWFSxkx5urZ3TPiBY4SbyDMaVSY
+Address: msBRGttdToJXjbMBK1VWSzm2hsa1VSnmPp
+
+客户2Private key: cR18rUvxgwLejYRHpHUZGXncTUMecVDpdYX9sgpoySnN34xieyjX
+Address: n1WfHywzmpSEMELwS61VhW2xn67rTnqsp3
+
+客户3Private key: cSC7ikwvRYhfayBiYjrwz2KXzp6Tq5JVzfgGT1AZBDtmr6KS7RpC
+Address: mgkFjNdsYYZnf6Cyn2M5qbSa5oRRNfkxWg
+
