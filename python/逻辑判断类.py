@@ -7,8 +7,8 @@ if panduan==1:  #模式1：计算器
 elif panduan==2:    #模式二：随机点名
         import random
         stu=['lili','zhayao','yangmi','liuyan']
-        sex=random.choice(stu)
-        print("jintianshejing",sex)
+        person=random.choice(stu)
+        print("被选中的是",person)
 
 
 elif panduan==3 :
