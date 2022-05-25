@@ -1,4 +1,4 @@
-# python
+# python 至2022年5月25日停止维护
 python实现的项目们  
 参照GL3,MIT License等开源代码协议，  
 本代码仅供学习和参考，如需使用请star  
