@@ -26,6 +26,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-<div align="center">  
-  < img  src="https://github-readme-streak-stats.herokuapp.com?user=LGC&theme=onedark&date_format=M%20j%5B%2C%20Y%5D" />
-</div>
+
