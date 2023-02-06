@@ -3,9 +3,7 @@
 ![](https://img.shields.io/badge/license-MIT-blue)
 python实现的项目们  
 参照GL3,MIT License等开源代码协议，  
-本代码仅供学习和参考，如需使用请star  
-不可以用于任何禁止使用开源代码的场合，如商业用途、明确要求不允许使用开源代码的作业等。  
-恶意违反开源协议的任何行为方，后果自负。  
+本代码仅供学习和参考，如需使用请star或fork  
 MIT License
 
 Copyright (c) 2022 LGC
