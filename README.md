@@ -1,4 +1,4 @@
-# python 至2022年5月25日停止维护
+# python
 
 ![](https://img.shields.io/badge/license-MIT-blue)
 python实现的项目们  
