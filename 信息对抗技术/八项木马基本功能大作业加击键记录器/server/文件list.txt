@@ -1,0 +1,13 @@
+test1.txt
+test.txt
+b.py
+a.py
+__pycache__
+server.py
+myfile1.txtscreenshot_1.jpg
+test1.txt
+test.txt
+b.py
+a.py
+server.py
+myfile1.txt
